@@ -1,7 +1,7 @@
 import React, {useEffect , useState} from 'react';
 import {  Link } from "react-router-dom";
-const TopBar= () =>{
-    const [links, setLinks] = useState(null)
+function TopBar() {
+    const [links, setLinks] = useState(undefined)
 
     useEffect( () => {
         const fetchLinks = async () =>{

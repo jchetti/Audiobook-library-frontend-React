@@ -9,26 +9,27 @@ function Genres(){
 
     useEffect( () => {
         const fetchLinks = async () =>{
-            const res = await fetch(params.link.genres)
-            const json = await res.json()
-            const genres = await json.genres
-            console.log(genres);
-            console.log(typeof (genres));
-            for (const genre of genres){
-                setGenres(genres => [...genres, genre])
+            const res = await fetch(params.link.genres);
+            const json = await res.json();
+            let allGenres = []
+            for (const genre of json.genres){
+                const resGenre = await fetch(genre)
+                const jsonGenre = await resGenre.json()
+                allGenres.push(jsonGenre)
             }
+            setGenres(allGenres)
         }
 
-        //fetchLinks().catch(console.error)
-    })
+        fetchLinks().catch(console.error);
+    });
 
     return(
         <div>
-            {/*<ul>*/}
-            {/*    {genres.map((genre) => (*/}
-            {/*        <h3>genre</h3>*/}
-            {/*    ))}*/}
-            {/*</ul>*/}
+            <ul>
+                {genres.map((genre) => (
+                    <li>{genre.name}</li>
+                ))}
+            </ul>
         </div>
     );
 }
