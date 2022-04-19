@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+#app{
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  color: darkgray;
+  word-break: break-all;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.center{
+  margin: auto;
+  width: fit-content;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a{
+  color: cadetblue;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body{
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background: #111;
+  color: azure;
+}
+input, textarea, button{
+  background-color: #555;
+}
+input::placeholder, textarea::placeholder, button{
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.button{
+  width: 80px;
+  height: 40px;
+  margin: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+textarea {
+  font-size:15px;
+  width:100%;
+  height: 200px;
+}
+#error{
+  color: red;
+}
+
+
+/* css van https://www.w3schools.com/howto/howto_js_topnav.asp */
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background: #333;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
