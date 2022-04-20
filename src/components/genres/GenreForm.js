@@ -39,16 +39,21 @@ function GenreForm(){
         <div>
             <h1>{params.title}</h1>
             <div>
-                <p id="error">{errorMessage.message}</p>
-                <label>Genre name:</label>
-                <input id="name" type="text" placeholder="Fantasy, Poetry etc."
-                       onChange={(e) => setGenreName(e.target.value)}
-                       value={params.genreData ? params.genreData.name : genreName}/>
-                <br/>
-                <label> Description: </label>
-                <textarea id="description" placeholder="Put the description here"
-                       onChange={(e) => setDescription(e.target.value)}
-                       value={params.genreData ? params.genreData.description : description}/>
+                {isDeleteRequest(params.request) ?
+                    <div><p>Do you really want to delete this genre?</p></div> :
+                    <div>
+                        <p id="error">{errorMessage.message}</p>
+                        <label>Genre name:</label>
+                        <input id="name" type="text" placeholder="Fantasy, Poetry etc."
+                               onChange={(e) => setGenreName(e.target.value)}
+                               value={params.genreData ? params.genreData.name : genreName}/>
+                        <br/>
+                        <label> Description: </label>
+                        <textarea id="description" placeholder="Put the description here"
+                                  onChange={(e) => setDescription(e.target.value)}
+                                  value={params.genreData ? params.genreData.description : description}/>
+                    </div>}
+
             </div>
             <button className="button" type="submit" onClick={() => sendRequest()}> {isDeleteRequest(params.request) ? "Delete" : "Submit"}</button>
         </div>
