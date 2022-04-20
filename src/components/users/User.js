@@ -14,6 +14,10 @@ function User(){
                const jsonPlayback = await resPlayback.json();
                const resBook = await fetch(jsonPlayback.audiobook);
                jsonPlayback.jsonBook = await resBook.json();
+               jsonPlayback.jsonBook.users = user.index;
+               const resAllLinks = await fetch(user.index);
+               const jsonAllLinks = await resAllLinks.json();
+               jsonPlayback.jsonBook.allReviews = jsonAllLinks.reviews;
                allPlaybacks.push(jsonPlayback);
            }
            setPlaybacks(allPlaybacks)
@@ -32,7 +36,9 @@ function User(){
           <hr/>
           <h2>Playbacks: </h2>
           {playbacks.map((playback) => (
-              <li key={playback.url}>{playback.jsonBook.name}</li>
+              <li key={playback.url}>
+                  <Link to={`/books/${playback.jsonBook.name}`} state={playback.jsonBook}>{playback.jsonBook.name}</Link>
+              </li>
           ))}
       </div>
     );
