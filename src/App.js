@@ -1,6 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Books from "./components/books/Books";
+import Book from "./components/books/Book"
 import Home from "./components/Home";
 import TopBar from "./components/TopBar";
 import Genres from "./components/genres/Genres";
@@ -15,6 +16,7 @@ function App() {
                   <TopBar/>
                   <Routes>
                       <Route path="books" element={<Books />} />
+                      <Route path="books/:id" element={<Book/>}/>
                       <Route path="genres" element={<Genres/>}/>
                       <Route path="genres/:id/delete" element={<GenreForm/>}/>
                       <Route path="genres/:id/update" element={<GenreForm/>}/>
