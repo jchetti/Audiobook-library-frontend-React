@@ -25,11 +25,11 @@ function Book(){
             <h1>{book.name}</h1>
             <h3>Authors:</h3>
             {book.authors.map( (author) => (
-                <p>{author}</p>
+                <p key={author}>{author}</p>
             ))}
             <h3>Genres:</h3>
             {genres.map( (genre) =>(
-                <div style={{display: "inline"}}>
+                <div key={genre.name} style={{display: "inline"}}>
                     <Link to={`/genres/${genre.name}`} state={genre}>{genre.name}</Link> |
                 </div>
             ))}

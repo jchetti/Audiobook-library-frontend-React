@@ -27,7 +27,7 @@ function Books() {
         <div>
             <h1>All Audiobooks</h1>
             {books.filter((book) => !book.removed).map((book) => (
-                <li id={book.url}>
+                <li key={book.url}>
                     <Link to={book.name} state={book}>{book.name}</Link>
                 </li>
             ))}
