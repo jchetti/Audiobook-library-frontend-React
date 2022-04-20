@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import TopBar from "./components/TopBar";
 import Genres from "./components/genres/Genres";
 import Genre from "./components/genres/Genre";
+import GenreForm from "./components/genres/GenreForm";
 
 function App() {
   return (
@@ -13,15 +14,12 @@ function App() {
               <Router>
                   <TopBar/>
                   <Routes>
-                      <Route path="" element={<Home />} />
-                  </Routes>
-                  <Routes>
                       <Route path="books" element={<Books />} />
-                  </Routes>
-                  <Routes>
-                      <Route path="genres" element={<Genres/>}>
-                          <Route path="genre/:id" element={<Genre/>}/>
-                      </Route>
+                      <Route path="genres" element={<Genres/>}/>
+                      <Route path="genres/:id/delete" element={<GenreForm/>}/>
+                      <Route path="genres/:id/update" element={<GenreForm/>}/>
+                      <Route path="genres/:id" element={<Genre/>}/>
+                      <Route path="" element={<Home />} />
                   </Routes>
               </Router>
           </div>

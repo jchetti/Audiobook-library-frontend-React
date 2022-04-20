@@ -1,22 +1,22 @@
-import { useLocation } from "react-router-dom";
+import {Link, useLocation, Outlet} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 function Genres(){
-    const [genres, setGenres] = useState(null)
-    const location = useLocation()
-    const params = location.state
+    const [genres, setGenres] = useState([]);
+    const location = useLocation();
+    const params = location.state;
 
     useEffect( () => {
         const fetchLinks = async () =>{
             const res = await fetch(params.link.genres);
             const json = await res.json();
-            let allGenres = []
+            let allGenres = [];
             for (const genre of json.genres){
-                const resGenre = await fetch(genre)
-                const jsonGenre = await resGenre.json()
-                allGenres.push(jsonGenre)
+                const resGenre = await fetch(genre);
+                const jsonGenre = await resGenre.json();
+                allGenres.push(jsonGenre);
             }
-            setGenres(allGenres)
+            setGenres(allGenres);
         }
 
         fetchLinks().catch(console.error);
@@ -24,11 +24,13 @@ function Genres(){
 
     return(
         <div>
-            <ul>
-                {genres.map((genre) => (
-                    <li>{genre.name}</li>
-                ))}
-            </ul>
+            <h1>Genres</h1>
+            {genres.map((genre) => (
+                <li>
+                    <Link to={genre.name} state={genre}>{genre.name}</Link>
+                </li>
+            ))}
+            <Outlet/>
         </div>
     );
 }

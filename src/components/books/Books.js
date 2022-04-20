@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 
 function Books() {
 
-    const [books, setBooks] = useState(null)
+    const [books, setBooks] = useState([])
     const location = useLocation()
     const params = location.state
 
