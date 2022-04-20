@@ -20,6 +20,7 @@ function ReviewForm(){
             headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
             body: JSON.stringify({user: currentUserUrl, audiobook: params.bookLink, description: description, score: score})
         }
+        console.log(requestOptions.body);
         const res = await fetch(params.requestUrl.toString(), requestOptions);
         let status = res.status;
         if (status === 400){
@@ -44,9 +45,12 @@ function ReviewForm(){
                 allUsers.push(jsonUser);
             }
             setUsers(allUsers);
+            if(allUsers.length > 0 && !currentUserUrl){
+                setCurrentUserUrl(allUsers[0].url)
+            }
         }
         fetchUsers().catch(console.error);
-    }, [params]);
+    }, [currentUserUrl, params]);
 
     return (
         <div>
