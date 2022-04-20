@@ -11,7 +11,6 @@ function Book(){
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-
         setDateDisp(formatDate(book.publicationDate))
 
         const fetchGenres = async () => {
@@ -23,7 +22,6 @@ function Book(){
            }
            setGenres(allGenres);
        }
-       fetchGenres().catch(console.error);
 
         function formatDate(d) {
             let date = new Date(d);
@@ -53,6 +51,11 @@ function Book(){
         fetchReviews().catch(console.error);
     }, [book.publicationDate, book.genres, book.reviews, book.users]);
 
+
+
+
+
+
     return(
         <div>
             <h1>{book.name}</h1>
@@ -81,7 +84,7 @@ function Book(){
                                       bookTitle: book.name, authors: book.authors, summary: book.description, duration: book.duration,
                                       genres: book.genres, date: book.publicationDate, link: book.link}}>Update audiobook</Link>
             <hr/>
-            <Link to={"/reviews/create"} state={{title: "Write review", request: "POST", requestUrl: book.reviews,
+            <Link to={"/reviews/create"} state={{title: "Write review", request: "POST", requestUrl: book.allReviews,
                 bookLink: book.url, usersLink: book.users}}>Write review</Link>
             <Reviews reviews={reviews}/>
         </div>
