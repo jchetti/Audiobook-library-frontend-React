@@ -17,7 +17,7 @@ function Genre(){
             setBooks(allBooks);
         }
         fetchBooks().catch(console.error)
-    });
+    }, [genre.audiobooks]);
 
     return(
         <div>

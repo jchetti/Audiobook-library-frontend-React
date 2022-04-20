@@ -1,6 +1,5 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {isDeleteRequest} from "../../Helpers";
 
 function ReviewForm(){
     const location = useLocation();
@@ -29,12 +28,15 @@ function ReviewForm(){
         } else {
             const res = await fetch(params.bookLink);
             const book = await res.json()
+            book.users = params.usersLink;
+            book.allReviews = params.allReviews;
             navigate(`/books/${book.name}`, {state: book})
         }
     }
 
     useEffect( () => {
         const fetchUsers = async () => {
+            console.log(params);
             const res = await fetch(params.usersLink);
             const json = await res.json();
             let allUsers = [];
@@ -46,7 +48,7 @@ function ReviewForm(){
             setUsers(allUsers);
         }
         fetchUsers().catch(console.error);
-    });
+    }, [params]);
 
     return (
         <div>

@@ -22,7 +22,7 @@ function Books() {
             setBooks(allBooks)
         }
         fetchLinks().catch(console.error)
-    });
+    }, [params.link.audiobooks, params.link.reviews, params.users]);
 
     return (
         <div>

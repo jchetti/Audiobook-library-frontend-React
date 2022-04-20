@@ -33,7 +33,7 @@ function Book(){
         }
         fetchGenres().catch(console.error);
        fetchReviews().catch(console.error);
-    }, [book.genres, book.reviews]);
+    }, [book.genres, book.reviews, book.users]);
 
     return(
         <div>

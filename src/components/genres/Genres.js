@@ -20,7 +20,7 @@ function Genres(){
         }
 
         fetchLinks().catch(console.error);
-    });
+    }, [params.link]);
 
     return(
         <div>

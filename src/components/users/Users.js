@@ -20,7 +20,7 @@ function Users(){
             setUsers(allUsers);
         }
         fetchLinks().catch(console.error);
-    });
+    }, [params.link]);
 
     return(
         <div>
