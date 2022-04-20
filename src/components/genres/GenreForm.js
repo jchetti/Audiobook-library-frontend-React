@@ -31,7 +31,7 @@ function GenreForm(){
         if (status === 400){
             setErrorMessage(await res.json());
         } else {
-            navigate("/genres", {link: params.allGenresLink});
+            navigate("/genres", {state :{link: params.allGenresLink}});
         }
     }
 
