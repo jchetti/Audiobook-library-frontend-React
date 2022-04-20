@@ -26,10 +26,10 @@ function ReviewForm(){
             setErrorMessage(await res.json());
         } else {
             const res = await fetch(params.bookLink);
-            const book = await res.json()
+            const book = await res.json();
             book.users = params.usersLink;
             book.allReviews = params.allReviews;
-            navigate(`/books/${book.name}`, {state: book})
+            navigate(`/books/${book.name}`, {state: book});
         }
     }
 

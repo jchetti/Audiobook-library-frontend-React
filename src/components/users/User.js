@@ -23,7 +23,7 @@ function User(){
            setPlaybacks(allPlaybacks)
        }
        fetchPlaybacks().catch(console.error);
-    }, [user.playbacks]);
+    }, [user.index, user.playbacks]);
 
     return(
       <div>
