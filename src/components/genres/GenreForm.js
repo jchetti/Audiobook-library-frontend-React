@@ -6,8 +6,8 @@ function GenreForm(){
     const location = useLocation();
     const params = location.state;
 
-    const [genreName, setGenreName] = useState("");
-    const [description, setDescription] = useState("");
+    const [genreName, setGenreName] = useState(params.genreName ? params.genreName : "");
+    const [description, setDescription] = useState(params.genreDescription ? params.genreDescription : "");
     const [errorMessage, setErrorMessage] = useState("");
 
     let navigate = useNavigate();
@@ -39,19 +39,19 @@ function GenreForm(){
         <div>
             <h1>{params.title}</h1>
             <div>
+                <p id="error">{errorMessage.message}</p>
                 {isDeleteRequest(params.request) ?
                     <div><p>Do you really want to delete this genre?</p></div> :
                     <div>
-                        <p id="error">{errorMessage.message}</p>
                         <label>Genre name:</label>
                         <input id="name" type="text" placeholder="Fantasy, Poetry etc."
                                onChange={(e) => setGenreName(e.target.value)}
-                               value={params.genreData ? params.genreData.name : genreName}/>
+                               value={genreName}/>
                         <br/>
                         <label> Description: </label>
                         <textarea id="description" placeholder="Put the description here"
                                   onChange={(e) => setDescription(e.target.value)}
-                                  value={params.genreData ? params.genreData.description : description}/>
+                                  value={description}/>
                     </div>}
 
             </div>

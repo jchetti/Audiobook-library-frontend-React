@@ -31,7 +31,8 @@ function Genre(){
             <hr/>
             <Link to="delete" state={{title: "Delete genre",request: "DELETE", postLink: genre.url, allGenresLink: genre.index}}>Delete Genre</Link>
             <br/>
-            <Link to="update" state={{title: "Update genre",request: "PATCH", postLink: genre.index, allGenresLink: genre.index}}>Update Genre</Link>
+            <Link to="update" state={{title: "Update genre",request: "PATCH", postLink: genre.url, allGenresLink: genre.index,
+                                        genreName: genre.name, genreDescription: genre.description}}>Update Genre</Link>
         </div>
     );
 }
