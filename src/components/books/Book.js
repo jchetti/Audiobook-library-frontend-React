@@ -51,7 +51,7 @@ function Book(){
         }
         fetchGenres().catch(console.error);
         fetchReviews().catch(console.error);
-    }, [formatDate, book.publicationDate, book.genres, book.reviews, book.users]);
+    }, [book.publicationDate, book.genres, book.reviews, book.users]);
 
     return(
         <div>
