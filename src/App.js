@@ -19,6 +19,7 @@ function App() {
                       <Route path="genres/:id/delete" element={<GenreForm/>}/>
                       <Route path="genres/:id/update" element={<GenreForm/>}/>
                       <Route path="genres/:id" element={<Genre/>}/>
+                      <Route path="genres/create"  element={<GenreForm/>}/>
                       <Route path="" element={<Home />} />
                   </Routes>
               </Router>

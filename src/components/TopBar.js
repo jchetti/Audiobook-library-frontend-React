@@ -16,6 +16,7 @@ function TopBar() {
             <Link to="/">Home</Link>
             <Link to="/books" state={{link: links}}>All books</Link>
             <Link to="/genres" state={{link: links}}>All genres</Link>
+            <Link to="/genres/create" state={{title: "Create genre"}}>Create Genre</Link>
         </div>
     );
 }
