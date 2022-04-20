@@ -15,7 +15,6 @@ function ReviewForm(){
     let navigate = useNavigate();
 
     async function sendReviewRequest(request){
-        console.log(currentUserUrl);
         let requestOptions = {
             method: request.toString(),
             headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
@@ -36,7 +35,6 @@ function ReviewForm(){
 
     useEffect( () => {
         const fetchUsers = async () => {
-            console.log(params);
             const res = await fetch(params.usersLink);
             const json = await res.json();
             let allUsers = [];
