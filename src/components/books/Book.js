@@ -38,6 +38,8 @@ function Book(){
             <h3>Duration:</h3>
             <p>{book["duration"] / 1000}s</p>
             <h3>Purchase link:</h3>
+            <a href={`${book.link}`} target="_blank">{book.link}</a>
+
         </div>
     )
 }
