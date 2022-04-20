@@ -2,10 +2,10 @@ import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 function Genre(){
-    const [genre, setGenre] = useState({});
-    const [books, setBooks] = useState([]);
     const location = useLocation();
-    const params = location.state;
+    const genre = location.state;
+    const [books, setBooks] = useState([]);
+
     useEffect(() => {
         const fetchBooks = async () =>{
             let allBooks = [];
@@ -16,9 +16,8 @@ function Genre(){
             }
             setBooks(allBooks);
         }
-        setGenre(params);
         fetchBooks().catch(console.error)
-    }, [books, genre.audiobooks, params])
+    });
 
     return(
         <div>
@@ -27,7 +26,7 @@ function Genre(){
             <p>{ genre.description}</p>
             <h3>Books with this genre:</h3>
             {books.map((book) => (
-                <li>{book.name}</li>
+                <li key={book.url}>{book.name}</li>
             ))}
             <hr/>
             <Link to="delete">Delete Genre</Link>
