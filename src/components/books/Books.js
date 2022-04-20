@@ -9,7 +9,7 @@ function Books() {
 
     useEffect( () => {
         const fetchLinks = async ()=>{
-            const res = await fetch(params.link.audiobooks)
+            const res = await fetch(params.link)
             const json = await res.json()
             let allBooks = []
             for (let book of json.audiobooks){
@@ -21,7 +21,7 @@ function Books() {
             setBooks(allBooks)
         }
         fetchLinks().catch(console.error)
-    });
+    },[params.link]);
 
     return (
         <div>
