@@ -25,6 +25,18 @@ function Book(){
        }
        fetchGenres().catch(console.error);
 
+        function formatDate(d) {
+            let date = new Date(d);
+            return [
+                padTo2Digits(date.getDate()),
+                padTo2Digits(date.getMonth() + 1),
+                date.getFullYear(),
+            ].join('/');
+        }
+        function padTo2Digits(num) {
+            return num.toString().padStart(2, '0');
+        }
+
         const fetchReviews = async () => {
             let allReviews = [];
             for (const reviewLink of book.reviews){
@@ -39,19 +51,7 @@ function Book(){
         }
         fetchGenres().catch(console.error);
         fetchReviews().catch(console.error);
-    });
-
-    function formatDate(d) {
-        let date = new Date(d);
-        return [
-            padTo2Digits(date.getDate()),
-            padTo2Digits(date.getMonth() + 1),
-            date.getFullYear(),
-        ].join('/');
-    }
-    function padTo2Digits(num) {
-        return num.toString().padStart(2, '0');
-    }
+    }, [formatDate, book.publicationDate, book.genres, book.reviews, book.users]);
 
     return(
         <div>
