@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 function Books() {
 
@@ -16,6 +16,7 @@ function Books() {
                 const resBook = await fetch(book)
                 const jsonBook = await resBook.json()
                 allBooks.push(jsonBook)
+
             }
             setBooks(allBooks)
         }
@@ -24,18 +25,12 @@ function Books() {
 
     return (
         <div>
-            <h1>Books</h1>
-            <table>
-                <tbody>
-                {
-                    books && books.map(book =>
-                        <tr>
-                            <td>{book.name}</td>
-                        </tr>
-                    )
-                }
-                </tbody>
-            </table>
+            <h1>All Audiobooks</h1>
+            {books.filter((book) => !book.removed).map((book) => (
+                <li id={book.url}>
+                    <Link to={book.name} state={book}>{book.name}</Link>
+                </li>
+            ))}
         </div>
     );
 }
