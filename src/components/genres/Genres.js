@@ -1,4 +1,4 @@
-import {Link, useLocation, Outlet} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 function Genres(){
@@ -30,7 +30,6 @@ function Genres(){
                     <Link to={genre.name} state={genre}>{genre.name}</Link>
                 </li>
             ))}
-            <Outlet/>
         </div>
     );
 }
