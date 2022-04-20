@@ -1,5 +1,6 @@
 import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
+import Reviews from "../reviews/Reviews";
 
 
 function Book(){
@@ -9,15 +10,15 @@ function Book(){
 
     useEffect(() => {
        const fetchGenres = async () => {
-           let allGenres = []
+           let allGenres = [];
            for(const genreLink of book.genres){
                const resGenre = await fetch(genreLink);
                const jsonGenre = await resGenre.json();
                allGenres.push(jsonGenre);
            }
-           setGenres(allGenres)
+           setGenres(allGenres);
        }
-       fetchGenres().catch(console.error)
+       fetchGenres().catch(console.error);
     });
 
     return(
@@ -39,7 +40,8 @@ function Book(){
             <p>{book["duration"] / 1000}s</p>
             <h3>Purchase link:</h3>
             <a href={`${book.link}`} target="_blank">{book.link}</a>
-
+            <hr/>
+            <Reviews reviewLinks={book.reviews}/>
         </div>
     )
 }
