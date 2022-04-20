@@ -8,7 +8,7 @@ function Genres(){
 
     useEffect( () => {
         const fetchLinks = async () =>{
-            const res = await fetch(params.link.genres);
+            const res = await fetch(params.link);
             const json = await res.json();
             let allGenres = [];
             for (const genre of json.genres){

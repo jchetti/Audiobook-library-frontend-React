@@ -1,7 +1,7 @@
 import React, {useEffect , useState} from 'react';
 import {  Link } from "react-router-dom";
 function TopBar() {
-    const [links, setLinks] = useState(undefined)
+    const [links, setLinks] = useState("")
 
     useEffect( () => {
         const fetchLinks = async () =>{
@@ -15,8 +15,9 @@ function TopBar() {
         <div className="topnav">
             <Link to="/">Home</Link>
             <Link to="/books" state={{link: links}}>All books</Link>
-            <Link to="/genres" state={{link: links}}>All genres</Link>
-            <Link to="/genres/create" state={{title: "Create genre"}}>Create Genre</Link>
+            <Link to="/genres" state={{link: links.genres}}>All genres</Link>
+            <Link to="/genres/create" state={{title: "Create genre", request: "POST", postLink: links.genres,
+                                                allGenresLink: links.genres}}>Create Genre</Link>
         </div>
     );
 }
