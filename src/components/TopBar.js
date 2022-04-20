@@ -14,7 +14,7 @@ function TopBar() {
     return (
         <div className="topnav">
             <Link to="/">Home</Link>
-            <Link to="/books" state={{link: links}}>All books</Link>
+            <Link to="/books" state={{link: links, users: links.users}}>All books</Link>
             <Link to="/genres" state={{link: links.genres}}>All genres</Link>
             <Link to="/users" state={{link: links.users}}>All users</Link>
             <Link to="/users/create" state={{title: "Create user", request: "POST", postLink: links.users,

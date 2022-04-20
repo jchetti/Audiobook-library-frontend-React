@@ -10,6 +10,7 @@ import GenreForm from "./components/genres/GenreForm";
 import Users from "./components/users/Users";
 import User from "./components/users/User";
 import UserForm from "./components/users/UserForm";
+import ReviewForm from "./components/reviews/ReviewForm";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
                   <Routes>
                       <Route path="books" element={<Books />} />
                       <Route path="books/:id" element={<Book/>}/>
+                      <Route path="reviews/create" element={<ReviewForm/>}/>
                       <Route path="genres" element={<Genres/>}/>
                       <Route path="genres/:id/delete" element={<GenreForm/>}/>
                       <Route path="genres/:id/update" element={<GenreForm/>}/>

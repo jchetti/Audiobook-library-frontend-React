@@ -13,10 +13,11 @@ function Books() {
             const json = await res.json()
             let allBooks = []
             for (let book of json.audiobooks){
-                const resBook = await fetch(book)
-                const jsonBook = await resBook.json()
+                const resBook = await fetch(book);
+                const jsonBook = await resBook.json();
+                jsonBook.users = params.users;
+                jsonBook.reviews = params.link.reviews;
                 allBooks.push(jsonBook)
-
             }
             setBooks(allBooks)
         }
