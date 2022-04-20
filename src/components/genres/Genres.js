@@ -26,7 +26,7 @@ function Genres(){
         <div>
             <h1>Genres</h1>
             {genres.map((genre) => (
-                <li>
+                <li id={genre.url}>
                     <Link to={genre.name} state={genre}>{genre.name}</Link>
                 </li>
             ))}

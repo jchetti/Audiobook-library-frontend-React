@@ -31,7 +31,13 @@ function GenreForm(){
         if (status === 400){
             setErrorMessage(await res.json());
         } else {
-            navigate("/genres", {state :{link: params.allGenresLink}});
+            if(params.request === "PATCH"){
+                const res = await fetch(params.postLink);
+                const genre = await res.json()
+                navigate(`/genres/${genre.name}`, {state: genre})
+            } else {
+                navigate("/genres", {state :{link: params.allGenresLink}});
+            }
         }
     }
 
