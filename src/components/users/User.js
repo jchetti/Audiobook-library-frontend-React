@@ -19,7 +19,7 @@ function User(){
            setPlaybacks(allPlaybacks)
        }
        fetchPlaybacks().catch(console.error);
-    });
+    }, [user.playbacks]);
 
     return(
       <div>

@@ -6,21 +6,19 @@ function ReviewForm(){
     const location = useLocation();
     const params = location.state;
 
-    const [currentUserUrl, setCurrentUserUrl] = useState("");
+    const [currentUserUrl, setCurrentUserUrl] = useState(params.currentUserUrl ? params.currentUserUrl : "");
     const [users, setUsers] = useState([]);
-    //const [username, setUsername] = useState(params.username ? params.username : "");
+    const [username] = useState(params.username ? params.username : "");
     const [score, setScore] = useState(params.score ? params.score : 1);
     const [description, setDescription] = useState(params.description ? params.description : "");
     const [errorMessage, setErrorMessage] = useState("");
 
     let navigate = useNavigate();
 
-    async function sendReviewRequest(){
-        // const resUser = await fetch(currentUserUrl);
-        // const jsonUser = await resUser.json();
+    async function sendReviewRequest(request){
         console.log(currentUserUrl);
         let requestOptions = {
-            method: params.request.toString(),
+            method: request.toString(),
             headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
             body: JSON.stringify({user: currentUserUrl, audiobook: params.bookLink, description: description, score: score})
         }
@@ -57,13 +55,13 @@ function ReviewForm(){
             <label>User: </label>
             <select id="dropDownUser" name="user" onChange={(e) => setCurrentUserUrl(e.target.value)}>
                 {users.map((user) => (
-                    <option value={user.url}>{user.name}</option>
+                    <option value={user.url} selected={user.name === username}>{user.name}</option>
                 ))}
             </select>
             <label>Score: </label>
             <select id="dropDownScore" name="score" onChange={(e) => setScore(e.target.value)}>
                 {[1,2,3,4,5,6,7,8,9,10].map((s) => (
-                    <option defaultValue={score}>{s}</option>
+                    <option defaultValue={score} selected={s === score}>{s}</option>
                 ))}
             </select>
             <div>
@@ -71,9 +69,9 @@ function ReviewForm(){
                           onChange={(e) => {setDescription(e.target.value)}}
                           value={description}/>
             </div>
-            <button className="button" type="submit" onClick={() => sendReviewRequest()}>Submit</button>
-            {isDeleteRequest(params.request) ?
-                <button className="button" type="submit" onClick={() => sendReviewRequest()}>Submit</button> :
+            <button className="button" type="submit" onClick={() => sendReviewRequest(params.request)}>Submit</button>
+            {params.request !== "POST" ?
+                <button className="button" type="submit" onClick={() => sendReviewRequest("DELETE")}>Delete</button> :
             <br/>}
         </div>
     );

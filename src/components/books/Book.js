@@ -1,5 +1,5 @@
 import {Link, useLocation} from "react-router-dom";
-import {useEffect, useLayoutEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Reviews from "../reviews/Reviews";
 
 
@@ -19,18 +19,21 @@ function Book(){
            }
            setGenres(allGenres);
        }
-       //  const fetchReviews = async () => {
-       //     let allReviews = [];
-       //     for (const reviewLink of book.reviews){
-       //          const resReview = await fetch(reviewLink);
-       //          const jsonReview = await resReview.json();
-       //          allReviews.push(jsonReview);
-       //     }
-       //     setReviews(allReviews);
-       // }
-       fetchGenres().catch(console.error);
-       // fetchReviews().catch(console.error);
-    });
+        const fetchReviews = async () => {
+           let allReviews = [];
+            for (const reviewLink of book.reviews){
+                const resReview = await fetch(reviewLink);
+                const jsonReview = await resReview.json();
+                const resUser = await fetch(jsonReview.user);
+                jsonReview.jsonUser = await resUser.json();
+                jsonReview.allUsers = book.users;
+                allReviews.push(jsonReview);
+            }
+            setReviews(allReviews);
+        }
+        fetchGenres().catch(console.error);
+       fetchReviews().catch(console.error);
+    }, [book.genres, book.reviews]);
 
     return(
         <div>
@@ -52,8 +55,8 @@ function Book(){
             <h3>Purchase link:</h3>
             <a href={`${book.link}`} target="_blank">{book.link}</a>
             <hr/>
-            <Link to={"/reviews/create"} state={{title: "Write review", request: "POST", postLink: "",
-                bookLink: book.url, usersLink: book.users, requestUrl: book.reviews }}>Write review</Link>
+            <Link to={"/reviews/create"} state={{title: "Write review", request: "POST", requestUrl: book.reviews,
+                bookLink: book.url, usersLink: book.users}}>Write review</Link>
             <Reviews reviews={reviews}/>
         </div>
     )

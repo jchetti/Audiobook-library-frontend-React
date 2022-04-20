@@ -21,6 +21,8 @@ function App() {
                   <Routes>
                       <Route path="books" element={<Books />} />
                       <Route path="books/:id" element={<Book/>}/>
+                      <Route path="books/:id/reviews/update" element={<ReviewForm/>}/>
+                      <Route path="books/:id" element={<Book/>}/>
                       <Route path="reviews/create" element={<ReviewForm/>}/>
                       <Route path="genres" element={<Genres/>}/>
                       <Route path="genres/:id/delete" element={<GenreForm/>}/>
