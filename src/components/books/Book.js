@@ -1,5 +1,6 @@
 import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
+import Reviews from "../reviews/Reviews";
 
 
 function Book(){
@@ -65,6 +66,8 @@ function Book(){
             <Link to="update" state={{title: "Update audiobook", request:"PATCH", postLink: book.url, allBooksLink: book.index,
                                       bookTitle: book.name, authors: book.authors, summary: book.description, duration: book.duration,
                                       genres: book.genres, date: book.publicationDate, link: book.link}}>Update audiobook</Link>
+            <hr/>
+            <Reviews reviewLinks={book.reviews}/>
         </div>
     )
 }
