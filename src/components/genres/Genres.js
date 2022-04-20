@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import {useEffect, useState} from "react";
-import {type} from "@testing-library/user-event/dist/type";
 
 function Genres(){
     const [genres, setGenres] = useState(null)

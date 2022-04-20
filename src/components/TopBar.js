@@ -14,7 +14,7 @@ function TopBar() {
     return (
         <div className="topnav">
             <Link to="/">Home</Link>
-            <Link to="/books">All books</Link>
+            <Link to="/books" state={{link: links}}>All books</Link>
             <Link to="/genres" state={{link: links}}>All genres</Link>
         </div>
     );
