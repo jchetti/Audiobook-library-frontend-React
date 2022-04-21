@@ -43,6 +43,8 @@ function User(){
                   <Link to={`/books/${playback.jsonBook.name}`} state={playback.jsonBook}>{playback.jsonBook.name}</Link>
               </li>
           ))}
+          <hr/>
+          <Link to="/playbacks/create" state={{title: "Create playback", request: "POST", allUsersLink: user.index, user:user}}>Add playback position</Link>
       </div>
     );
 }

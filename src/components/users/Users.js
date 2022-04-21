@@ -26,7 +26,7 @@ function Users(){
         <div>
             <h1>Users</h1>
             {users.map((user) => (
-                <li id={user.url}>
+                <li id={user.url} key={user.url}>
                     <Link to={user.name} state={user}>{user.name}</Link>
                 </li>
             ))}

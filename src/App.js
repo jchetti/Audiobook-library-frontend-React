@@ -12,6 +12,7 @@ import User from "./components/users/User";
 import UserForm from "./components/users/UserForm";
 import BookForm from "./components/books/BookForm";
 import ReviewForm from "./components/reviews/ReviewForm";
+import PlaybackForm from "./components/playbacks/PlaybackForm";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
                       <Route path="books/:id/reviews/update" element={<ReviewForm/>}/>
 
                       <Route path="reviews/create" element={<ReviewForm/>}/>
+
+                      <Route path="playbacks/create" element={<PlaybackForm/>}/>
 
                       <Route path="genres" element={<Genres/>}/>
                       <Route path="genres/:id/delete" element={<GenreForm/>}/>
