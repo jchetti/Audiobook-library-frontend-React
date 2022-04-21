@@ -44,12 +44,13 @@ function ReviewForm(){
                 allUsers.push(jsonUser);
             }
             setUsers(allUsers);
+
             if(allUsers.length > 0 && !currentUserUrl){
                 setCurrentUserUrl(allUsers[0].url)
             }
         }
         fetchUsers().catch(console.error);
-    }, [currentUserUrl, params]);
+    }, [currentUserUrl, params.usersLink, users]);
 
     return (
         <div>
@@ -58,13 +59,13 @@ function ReviewForm(){
             <label>User: </label>
             <select id="dropDownUser" name="user" onChange={(e) => setCurrentUserUrl(e.target.value)}>
                 {users.map((user) => (
-                    <option value={user.url} selected={user.name === username}>{user.name}</option>
+                    <option value={user.url} selected={user.name === username} key={user.url}>{user.name}</option>
                 ))}
             </select>
             <label>Score: </label>
             <select id="dropDownScore" name="score" onChange={(e) => setScore(e.target.value)}>
                 {[1,2,3,4,5,6,7,8,9,10].map((s) => (
-                    <option defaultValue={score} selected={s === score}>{s}</option>
+                    <option defaultValue={score} selected={s === score} key={s}>{s}</option>
                 ))}
             </select>
             <div>

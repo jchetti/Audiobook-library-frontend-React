@@ -16,6 +16,7 @@ function PlaybackForm(){
     let navigate = useNavigate();
 
     useEffect( () => {
+        document.title = "playback form"
         const fetchShit = async () => {
             const usersRes = await fetch(params.allUsersLink);
             const userJson = await usersRes.json();
@@ -32,6 +33,7 @@ function PlaybackForm(){
                 books.push(bookJson);
             }
             setAllBooks(books)
+
         }
         fetchShit().catch(console.error)
     });

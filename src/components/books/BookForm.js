@@ -63,6 +63,7 @@ function BookForm(){
     }
 
     useEffect(() => {
+        document.title = "audiobooks form"
        const fetchGenres = async () => {
            let tmpRes = await fetch(params.allBooksLink);
            let tmpJson = await tmpRes.json();
@@ -75,14 +76,14 @@ function BookForm(){
                const resGenre = await fetch(genreLink);
                const jsonGenre = await resGenre.json();
                if(genres){
-                   console.log("yes")
                    jsonGenre.checked = genres.includes(jsonGenre.url);
                } else {
                    jsonGenre.checked = false;
                }
                AGenres.push(jsonGenre);
+               setAllGenres(AGenres)
            }
-           setAllGenres(AGenres)
+
        }
        fetchGenres().catch(console.error);
        if(date){
@@ -110,7 +111,7 @@ function BookForm(){
                                value={authors}/>
                         <br/>
                         <label> Summary:</label>
-                        <textarea class="form-control" id="summary" placeholder="summary" name="summary"
+                        <textarea id="summary" placeholder="summary" name="summary"
                                   onChange={(e) => setSummary(e.target.value)}
                                   value={summary}/>
                         <br/>

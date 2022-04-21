@@ -8,6 +8,7 @@ function Books() {
     const params = location.state
 
     useEffect( () => {
+        document.title = "audiobooks"
         const fetchLinks = async () => {
             const res = await fetch(params.link.audiobooks)
             const json = await res.json()
@@ -18,8 +19,9 @@ function Books() {
                 jsonBook.users = params.users;
                 jsonBook.allReviews = params.link.reviews;
                 allBooks.push(jsonBook)
+                setBooks(allBooks)
             }
-            setBooks(allBooks)
+
         }
         fetchLinks().catch(console.error)
     }, [params.link.audiobooks, params.link.reviews, params.users]);

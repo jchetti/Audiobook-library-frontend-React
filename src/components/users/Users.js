@@ -8,6 +8,8 @@ function Users(){
     const params = location.state;
 
     useEffect( () => {
+        document.title = "users"
+
         const fetchLinks = async () => {
             const res = await fetch(params.link);
             const json = await res.json();
@@ -16,8 +18,9 @@ function Users(){
                 const resUser = await fetch(user);
                 const jsonUser = await resUser.json();
                 allUsers.push(jsonUser);
+                setUsers(allUsers);
             }
-            setUsers(allUsers);
+
         }
         fetchLinks().catch(console.error);
     }, [params.link]);

@@ -1,5 +1,5 @@
 import {useLocation, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {isDeleteRequest} from "../../Helpers";
 
 function UserForm(){
@@ -11,6 +11,10 @@ function UserForm(){
     const [errorMessage, setErrorMessage] = useState("");
 
     let navigate = useNavigate();
+
+    useEffect( () => {
+        document.title = "user form"
+    }, [])
 
     async function sendRequest(){
         let requestOptions;

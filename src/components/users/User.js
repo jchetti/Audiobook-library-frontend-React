@@ -7,6 +7,7 @@ function User(){
     const [playbacks, setPlaybacks] = useState([]);
 
     useEffect(() => {
+        document.title = user.name
        const fetchPlaybacks = async () => {
            let allPlaybacks = [];
            for (const playbackLink of user.playbacks){
@@ -22,11 +23,12 @@ function User(){
                jsonPlayback.jsonBook.allReviews = jsonAllLinks.reviews;
                //console.log(jsonPlayback.jsonBook);
                allPlaybacks.push(jsonPlayback);
+               setPlaybacks(allPlaybacks)
            }
-           setPlaybacks(allPlaybacks)
+           
        }
        fetchPlaybacks().catch(console.error);
-    }, [user.index, user.playbacks]);
+    }, [user.index, user.name, user.playbacks]);
 
     return(
       <div>

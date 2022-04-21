@@ -11,6 +11,8 @@ function Book(){
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
+        document.title = book.name
+
         setDateDisp(formatDate(book.publicationDate))
 
         const fetchGenres = async () => {
@@ -19,8 +21,9 @@ function Book(){
                const resGenre = await fetch(genreLink);
                const jsonGenre = await resGenre.json();
                allGenres.push(jsonGenre);
+                setGenres(allGenres);
            }
-           setGenres(allGenres);
+           
        }
 
         function formatDate(d) {
@@ -49,7 +52,7 @@ function Book(){
         }
         fetchGenres().catch(console.error);
         fetchReviews().catch(console.error);
-    }, [book.publicationDate, book.genres, book.reviews, book.users]);
+    }, [book.publicationDate, book.genres, book.reviews, book.users, book.name]);
 
 
 

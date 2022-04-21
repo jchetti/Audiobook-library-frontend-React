@@ -7,6 +7,7 @@ function Genres(){
     const params = location.state;
 
     useEffect( () => {
+        document.title = "genres"
         const fetchLinks = async () =>{
             const res = await fetch(params.link);
             const json = await res.json();
@@ -15,8 +16,9 @@ function Genres(){
                 const resGenre = await fetch(genre);
                 const jsonGenre = await resGenre.json();
                 allGenres.push(jsonGenre);
+                setGenres(allGenres);
             }
-            setGenres(allGenres);
+
         }
 
         fetchLinks().catch(console.error);
@@ -26,7 +28,7 @@ function Genres(){
         <div>
             <h1>Genres</h1>
             {genres.map((genre) => (
-                <li id={genre.url}>
+                <li id={genre.url} key={genre.url}>
                     <Link to={genre.name} state={genre}>{genre.name}</Link>
                 </li>
             ))}

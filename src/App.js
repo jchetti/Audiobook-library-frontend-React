@@ -13,8 +13,10 @@ import UserForm from "./components/users/UserForm";
 import BookForm from "./components/books/BookForm";
 import ReviewForm from "./components/reviews/ReviewForm";
 import PlaybackForm from "./components/playbacks/PlaybackForm";
+import {useEffect} from "react";
 
 function App() {
+
   return (
       <div className="center">
           <div className="app">
@@ -43,6 +45,8 @@ function App() {
                       <Route path="users/create" element={<UserForm/>}/>
                       <Route path="users/:id/delete" element={<UserForm/>}/>
                       <Route path="users/:id/update" element={<UserForm/>}/>
+                      <Route path="users/:id/playbacks/update" element={<PlaybackForm/>}/>
+                      <Route path="users/:id/playbacks/delete" element={<PlaybackForm/>}/>
                       <Route path="" element={<Home />} />
                   </Routes>
               </Router>

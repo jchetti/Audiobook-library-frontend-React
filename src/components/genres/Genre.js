@@ -7,6 +7,7 @@ function Genre(){
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
+        document.title = genre.name
         const fetchBooks = async () =>{
             let allBooks = [];
             for (const bookLink of genre.audiobooks){

@@ -1,8 +1,13 @@
 import {useLocation, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {isDeleteRequest} from "../../Helpers";
 
 function GenreForm(){
+
+    useEffect( () => {
+        document.title = "genre form"
+    }, [])
+
     const location = useLocation();
     const params = location.state;
 
