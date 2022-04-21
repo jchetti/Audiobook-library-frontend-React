@@ -41,9 +41,23 @@ function User(){
           <hr/>
           <h2>Playbacks: </h2>
           {playbacks.map((playback) => (
-              <li key={playback.url}>
+              <div key={playback.url}>
+                  <hr/>
                   <Link to={`/books/${playback.jsonBook.name}`} state={playback.jsonBook}>{playback.jsonBook.name}</Link>
-              </li>
+                  <br/>
+                  <div style={{display: "inline"}}>
+                      <label>Position: </label>
+                      <label> {playback.position / 1000}s / {playback.jsonBook.duration / 1000}s | </label>
+                      <Link to={`/users/${playback.jsonBook.name}/playbacks/update`}
+                            state={{title: "Update playback", request: "PATCH", allUsersLink: user.index, user:user,
+                                selectedBook: playback.jsonBook.url, position: playback.position, requestUrl: playback.url}}>
+                          Update Playback</Link>
+                      <label> | </label>
+                      <Link to={`/users/${playback.jsonBook.name}/playbacks/delete`}
+                            state={{title: "Delete playback", request:"DELETE", allUsersLink: user.index, user:user, requestUrl: playback.url}}>
+                          Delete Playback</Link>
+                  </div>
+              </div>
           ))}
           <hr/>
           <Link to="/playbacks/create" state={{title: "Create playback", request: "POST", allUsersLink: user.index, user:user}}>Add playback position</Link>
