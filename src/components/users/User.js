@@ -21,7 +21,6 @@ function User(){
                const resAllLinks = await fetch(jsonUserLinks.index);
                const jsonAllLinks = await resAllLinks.json()
                jsonPlayback.jsonBook.allReviews = jsonAllLinks.reviews;
-               //console.log(jsonPlayback.jsonBook);
                allPlaybacks.push(jsonPlayback);
                setPlaybacks(allPlaybacks)
            }

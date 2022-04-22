@@ -41,7 +41,6 @@ function PlaybackForm(){
     async function sendRequest(){
         let requestOptions;
         if (isDeleteRequest(params.request)){
-            console.log("delete")
             requestOptions = {
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'}
