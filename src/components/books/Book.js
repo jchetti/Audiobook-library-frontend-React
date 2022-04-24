@@ -21,9 +21,8 @@ function Book(){
                const resGenre = await fetch(genreLink);
                const jsonGenre = await resGenre.json();
                allGenres.push(jsonGenre);
-                setGenres(allGenres);
+               setGenres(allGenres);
            }
-           
        }
 
         function formatDate(d) {

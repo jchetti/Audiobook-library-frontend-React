@@ -24,6 +24,7 @@ function User(){
                allPlaybacks.push(jsonPlayback);
                setPlaybacks(allPlaybacks)
            }
+           setPlaybacks(allPlaybacks);
            
        }
        fetchPlaybacks().catch(console.error);

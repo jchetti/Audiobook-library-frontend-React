@@ -18,13 +18,15 @@ function Books() {
                 const jsonBook = await resBook.json();
                 jsonBook.users = params.users;
                 jsonBook.allReviews = params.link.reviews;
-                allBooks.push(jsonBook)
-                setBooks(allBooks)
+                allBooks.push(jsonBook);
             }
+            setBooks(allBooks);
 
         }
-        fetchLinks().catch(console.error)
-    }, [params.link.audiobooks, params.link.reviews, params.users]);
+        fetchLinks().catch(console.error);
+    }
+        ,[params.link.audiobooks, params.link.reviews, params.users]
+    );
 
     return (
         <div>

@@ -16,9 +16,8 @@ function Genres(){
                 const resGenre = await fetch(genre);
                 const jsonGenre = await resGenre.json();
                 allGenres.push(jsonGenre);
-                setGenres(allGenres);
             }
-
+            setGenres(allGenres);
         }
 
         fetchLinks().catch(console.error);

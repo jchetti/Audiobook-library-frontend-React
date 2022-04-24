@@ -18,8 +18,8 @@ function Users(){
                 const resUser = await fetch(user);
                 const jsonUser = await resUser.json();
                 allUsers.push(jsonUser);
-                setUsers(allUsers);
             }
+            setUsers(allUsers);
 
         }
         fetchLinks().catch(console.error);
