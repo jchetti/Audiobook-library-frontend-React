@@ -38,8 +38,8 @@ function GenreForm(){
         } else {
             if(params.request === "PATCH"){
                 const res = await fetch(params.postLink);
-                const genre = await res.json()
-                navigate(`/genres/${genre.name}`, {state: genre})
+                const genre = await res.json();
+                navigate(`/genres/${genre.name}`, {state: genre});
             } else {
                 navigate("/genres", {state :{link: params.allGenresLink}});
             }

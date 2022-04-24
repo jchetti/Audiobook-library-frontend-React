@@ -3,16 +3,16 @@ import {Link, useLocation} from "react-router-dom";
 
 function Books() {
 
-    const [books, setBooks] = useState([])
-    const location = useLocation()
-    const params = location.state
+    const [books, setBooks] = useState([]);
+    const location = useLocation();
+    const params = location.state;
 
     useEffect( () => {
         document.title = "audiobooks"
         const fetchLinks = async () => {
-            const res = await fetch(params.link.audiobooks)
-            const json = await res.json()
-            let allBooks = []
+            const res = await fetch(params.link.audiobooks);
+            const json = await res.json();
+            let allBooks = [];
             for (let book of json.audiobooks){
                 const resBook = await fetch(book);
                 const jsonBook = await resBook.json();

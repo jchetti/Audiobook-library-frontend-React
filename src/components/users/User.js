@@ -22,7 +22,6 @@ function User(){
                const jsonAllLinks = await resAllLinks.json()
                jsonPlayback.jsonBook.allReviews = jsonAllLinks.reviews;
                allPlaybacks.push(jsonPlayback);
-               setPlaybacks(allPlaybacks)
            }
            setPlaybacks(allPlaybacks);
            

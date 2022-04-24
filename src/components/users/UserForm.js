@@ -31,14 +31,14 @@ function UserForm(){
             };
         }
         const res = await fetch(params.postLink.toString(), requestOptions);
-        let status = res.status
+        let status = res.status;
         if (status === 400){
             setErrorMessage(await res.json());
         } else {
             if(params.request === "PATCH"){
                 const res = await fetch(params.postLink);
-                const user = await res.json()
-                navigate(`/users/${user.name}`, {state: user})
+                const user = await res.json();
+                navigate(`/users/${user.name}`, {state: user});
             } else {
                 navigate("/users", {state :{link: params.allUsersLink}});
             }

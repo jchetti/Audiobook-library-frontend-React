@@ -6,21 +6,21 @@ function BookForm(){
     const location = useLocation();
     const params = location.state;
 
-    const[bookTitle, setBookTitle] = useState(params.bookTitle ? params.bookTitle : "")
-    const[authors, setAuthors] = useState(params.authors ? params.authors : [])
-    const[summary, setSummary] = useState(params.summary ? params.summary : "")
-    const[duration, setDuration] = useState(params.duration ? params.duration : "")
-    const[genres, setGenres] = useState(params.genres ? params.genres : [])
-    const[date, setDate] = useState(params.date ? params.date : "")
-    const[link, setLink] = useState(params.link ? params.link : "")
+    const[bookTitle, setBookTitle] = useState(params.bookTitle ? params.bookTitle : "");
+    const[authors, setAuthors] = useState(params.authors ? params.authors : []);
+    const[summary, setSummary] = useState(params.summary ? params.summary : "");
+    const[duration, setDuration] = useState(params.duration ? params.duration : "");
+    const[genres, setGenres] = useState(params.genres ? params.genres : []);
+    const[date, setDate] = useState(params.date ? params.date : "");
+    const[link, setLink] = useState(params.link ? params.link : "");
 
-    const[displayDate, setDisplayDate] = useState("")
+    const[displayDate, setDisplayDate] = useState("");
 
-    let[allGenres, setAllGenres] = useState([])
+    let[allGenres, setAllGenres] = useState([]);
 
-    const[errorMessage, setErrorMessage] = useState("")
+    const[errorMessage, setErrorMessage] = useState("");
 
-    let navigate = useNavigate()
+    let navigate = useNavigate();
 
     async function sendRequest(){
         let requestOptions;
@@ -56,10 +56,10 @@ function BookForm(){
         let updatedList = [...allGenres];
         for(let genre of updatedList){
             if(genre.url === event.target.value){
-                genre.checked = event.target.checked
+                genre.checked = event.target.checked;
             }
         }
-        setAllGenres(updatedList)
+        setAllGenres(updatedList);
     }
 
     useEffect(() => {
@@ -71,7 +71,7 @@ function BookForm(){
            tmpJson = await tmpRes.json();
            const res = await fetch(tmpJson.genres);
            const genresJson = await res.json();
-           let AGenres = []
+           let AGenres = [];
            for(const genreLink of genresJson.genres){
                const resGenre = await fetch(genreLink);
                const jsonGenre = await resGenre.json();
@@ -81,14 +81,14 @@ function BookForm(){
                    jsonGenre.checked = false;
                }
                AGenres.push(jsonGenre);
-               setAllGenres(AGenres)
+               setAllGenres(AGenres);
            }
 
        }
        fetchGenres().catch(console.error);
        if(date){
            let tmpDate = new Date(date);
-           setDisplayDate(tmpDate.toISOString().split('T')[0])
+           setDisplayDate(tmpDate.toISOString().split('T')[0]);
        }
     }, [date, genres, params.allBooksLink]);
 

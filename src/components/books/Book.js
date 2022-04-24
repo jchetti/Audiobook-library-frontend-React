@@ -6,17 +6,17 @@ import Reviews from "../reviews/Reviews";
 function Book(){
     const location = useLocation();
     const book = location.state;
-    const [genres, setGenres] = useState([])
-    const [dateDisp, setDateDisp] = useState("")
-    const [reviews, setReviews] = useState([])
+    const [genres, setGenres] = useState([]);
+    const [dateDisp, setDateDisp] = useState("");
+    const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        document.title = book.name
+        document.title = book.name;
 
-        setDateDisp(formatDate(book.publicationDate))
+        setDateDisp(formatDate(book.publicationDate));
 
         const fetchGenres = async () => {
-            let allGenres = []
+            let allGenres = [];
             for(const genreLink of book.genres){
                const resGenre = await fetch(genreLink);
                const jsonGenre = await resGenre.json();

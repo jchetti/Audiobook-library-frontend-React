@@ -3,8 +3,8 @@ import {useEffect, useState} from "react";
 import {isDeleteRequest} from "../../Helpers";
 
 function PlaybackForm(){
-    const location = useLocation()
-    const params = location.state
+    const location = useLocation();
+    const params = location.state;
 
     const user = params.user;
     const [requestUrl, setRequestUrl] = useState(params.requestUrl ? params.requestUrl : "");
@@ -32,10 +32,10 @@ function PlaybackForm(){
                 const bookJson = await bookRes.json();
                 books.push(bookJson);
             }
-            setAllBooks(books)
+            setAllBooks(books);
 
         }
-        fetchShit().catch(console.error)
+        fetchShit().catch(console.error);
     });
 
     async function sendRequest(){
@@ -59,7 +59,7 @@ function PlaybackForm(){
         } else {
             const userRes = await fetch(user.url);
             const userJson = await userRes.json();
-            navigate(`/users/${user.name}`, {state:userJson})
+            navigate(`/users/${user.name}`, {state:userJson});
         }
     }
 
