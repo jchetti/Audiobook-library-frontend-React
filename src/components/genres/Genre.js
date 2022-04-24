@@ -18,7 +18,7 @@ function Genre(){
             setBooks(allBooks);
         }
         fetchBooks().catch(console.error)
-    }, [genre.audiobooks]);
+    }, [genre.audiobooks, genre.name]);
 
     return(
         <div>
@@ -27,7 +27,9 @@ function Genre(){
             <p>{ genre.description}</p>
             <h3>Books with this genre:</h3>
             {books.map((book) => (
-                <li key={book.url}>{book.name}</li>
+                <li key={book.url}>
+                    <Link to={`/books/${book.name}`} state={book}>{book.name}</Link>
+                </li>
             ))}
             <hr/>
             <Link to="delete" state={{title: "Delete genre",request: "DELETE", postLink: genre.url, allGenresLink: genre.index}}>Delete Genre</Link>

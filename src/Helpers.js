@@ -1,3 +1,3 @@
 export function isDeleteRequest(request){
-    return request === "DELETE"
+    return request === "DELETE";
 }
