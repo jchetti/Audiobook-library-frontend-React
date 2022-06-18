@@ -1,3 +1,8 @@
+# Description
+Made in collaboration with [Jahid Chetti](https://github.com/jchetti) in my second year @Ghent-University. 
+
+This is the same application as https://github.com/jchetti/audiobook-library-frontend-vue, but written in React instead of Vue. See the previously mentioned repository for more information.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,7 +73,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Description
-Made in collaboration with [Jahid Chetti](https://github.com/jchetti) in my second year @Ghent-University. 
-
-This is the same application as https://github.com/jchetti/audiobook-library-frontend-vue, but written in React instead of Vue. See the previously mentioned repository for more information.
