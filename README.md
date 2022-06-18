@@ -1,5 +1,5 @@
 # Description
-Made in collaboration with [Jahid Chetti](https://github.com/jchetti) in my second year @Ghent-University. 
+Made in collaboration with [Sheng Tao Tian](https://github.com/GashinRS) in my second year @Ghent-University. 
 
 This is the same application as https://github.com/jchetti/audiobook-library-frontend-vue, but written in React instead of Vue. See the previously mentioned repository for more information.
 
